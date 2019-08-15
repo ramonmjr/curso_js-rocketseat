@@ -1,0 +1,104 @@
+<html>
+  <head>
+    <title>Desafio</title>
+  </head>
+  <body>
+    <script>
+      //1
+      endereco = {
+        rua: "Rua dos pinheiros",
+        numero: 1293,
+        bairro: "Centro",
+        cidade: "São Paulo",
+        uf: "SP"
+      };
+
+      var enderecoCidadao = retornarEndereco(endereco);
+
+      function retornarEndereco(endereco) {
+        var textoEstatico = "O usuário mora em ";
+        var textoEstaticoBairro = " no bairro ";
+        var textoEstaticoRua = " na rua ";
+        var textoEstaticoNumero = " com n° ";
+        return (
+          textoEstatico +
+          endereco.cidade +
+          " / " +
+          endereco.uf +
+          textoEstaticoBairro +
+          endereco.bairro +
+          textoEstaticoRua +
+          "'" +
+          endereco.rua +
+          "'" +
+          textoEstaticoNumero +
+          endereco.numero
+        );
+      }
+
+      //2
+      var numero = 100;
+      exibePares(numero);
+      function exibePares(numero) {
+        for (i = 1; i <= 100; i++) {
+          if (i % 2 == 0) {
+            console.log(i + " é par.");
+          }
+        }
+      }
+
+      //3
+      var skills = ["Javascript", "ReactJS", "React Native"];
+
+      temHabilidade(skills);
+
+      function temHabilidade(skills) {
+        if (skills.indexOf("javascript")) {
+          console.log(true);
+        } else {
+          console.log(false);
+        }
+      }
+
+      //4
+      var anosEstudo = 7;
+      console.log(experiencia(anosEstudo));
+      function experiencia(anosEstudo) {
+        if (anosEstudo <= 1) {
+          return "iniciante";
+        } else if (anosEstudo > 1 && anosEstudo <= 3) {
+          return "Intermediário";
+        } else if (anosEstudo > 3 && anosEstudo <= 6) {
+          return "Avançado";
+        } else {
+          return "Jedi Master";
+        }
+      }
+
+      //5
+      var usuarios = [
+        {
+          nome: "Diego",
+          habilidades: ["Javascript", "ReactJS", "Redux"]
+        },
+        {
+          nome: "Gabriel",
+          habilidades: ["VueJs", "Ruby on Rails", "Elixir"]
+        }
+      ];
+      imprimirHabilidades(usuarios);
+      function imprimirHabilidades(usuarios) {
+        for (usuario of usuarios) {
+          var artigo = "O";
+          var textoHabilidades = " possui as habilidades: ";
+          console.log(
+            artigo +
+              usuario.nome +
+              textoHabilidades +
+              usuario.habilidades.join(", ")
+          );
+        }
+      }
+    </script>
+  </body>
+</html>

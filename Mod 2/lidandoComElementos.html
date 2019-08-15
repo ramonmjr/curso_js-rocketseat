@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <title>Mod 2</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" id="nome" />
+    </div>
+    <script>
+      var linkElement = document.createElement("a");
+      linkElement.setAttribute("href", "http://rocketseat.com.br");
+      linkElement.setAttribute("tittle", "Site da RocketSeat");
+
+      var textElement = document.createTextNode("Acessar site da rocketseat");
+      linkElement.appendChild(textElement);
+
+      var containerElement = document.querySelector("#app");
+      containerElement.appendChild(linkElement);
+      containerElement.removeChild(document.querySelector("#nome"));
+    </script>
+  </body>
+</html>

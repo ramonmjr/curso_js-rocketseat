@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>Mod 2</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" name="nome" id="nome" class="nome" />
+      <input type="text" name="nome2" id="nome2" class="nome" />
+      <button class="botao">Adicionar</button>
+    </div>
+    <script>
+      var inputElement = document.getElementById("nome");
+      var elements = document.getElementsByTagName("input");
+      var elementsByClass = document.getElementsByClassName("nome");
+      var input = document.querySelectorAll("div#app input");
+      // var input = document.querySelector("input[name=nome]");
+      console.log(inputElement, elements, elementsByClass, input);
+      var btnElement = document.querySelector("button.botao");
+      btnElement.onclick = function() {
+        var text = inputElement.value;
+        alert("Botão Clicado, valor do texto é: " + inputElement.value);
+      };
+    </script>
+  </body>
+</html>

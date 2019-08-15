@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <title>Mod 2</title>
+  </head>
+  <body>
+    <div id="app">
+      <button id="gerarNovoQuadrado">Gerar Quadrado</button>
+      <input type="text" id="nome" />
+      <button id="addPessoa">Adicionar Pessoa</button>
+      <ul id="listaNomes"></ul>
+    </div>
+    <script>
+      //1
+      var divElement = document.querySelector("#app");
+      var buttonElement = document.querySelector("#gerarNovoQuadrado");
+      buttonElement.onclick = function() {
+        var novoQuadrado = document.createElement("div");
+        novoQuadrado.setAttribute("class", "quadrado");
+        novoQuadrado.style.width = 100;
+        novoQuadrado.style.height = 100;
+        novoQuadrado.style.backgroundColor = "#f00";
+
+        novoQuadrado.onmouseover = function() {
+          novoQuadrado.style.backgroundColor = getRandomColor();
+        };
+        divElement.appendChild(novoQuadrado);
+      };
+
+      //2
+      function getRandomColor() {
+        var letters = "0123456789ABCDEF";
+        var color = "#";
+        for (var i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
+
+      //3
+      var nomes = ["Diego", "Gabriel", "Lucas"];
+      var btnAdd = document.querySelector("#addPessoa");
+      var ulElement = document.querySelector("#listaNomes");
+
+      btnAdd.onclick = function() {
+        inputNameElement = document.querySelector("#nome");
+        if (inputNameElement.value != "") {
+          var liElement = document.createElement("li");
+          var textElement = document.createTextNode(inputNameElement.value);
+          liElement.appendChild(textElement);
+          ulElement.appendChild(liElement);
+          inputNameElement.value = "";
+        }
+      };
+
+      for (const nome of nomes) {
+        var liElement = document.createElement("li");
+        var textElement = document.createTextNode(nome);
+        liElement.appendChild(textElement);
+        ulElement.appendChild(liElement);
+      }
+    </script>
+  </body>
+</html>
