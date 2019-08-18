@@ -159,7 +159,7 @@
 
 // console.log(usuario);
 
-// ---------------- DESAFIOS
+// ---------------- DESAFIOS MODULO 1
 // -- 1
 // class Usuario {
 //   constructor(email, senha) {
@@ -355,13 +355,196 @@
 // console.log(text);
 
 //------------- 7
-const nome = "Diego";
-const idade = 23;
+// const nome = "Diego dos Santos";
+// const idade = 23;
 
-const usuario = {
-  nome,
-  idade,
-  cidade: "Rio do Sul"
+// const usuario = {
+//   nome,
+//   idade,
+//   cidade: "Rio do Sul"
+// };
+
+// console.log(usuario);
+
+//---------- DESAFIO MODULO 2
+
+//-----------1
+
+// import usuario, { idade as idadeUsuario } from "./functions";
+
+// usuario.info();
+// console.log(idadeUsuario);
+
+//------------ MODULO 3 - ASYNC AWAIT
+//--------------AULA 1
+
+const minhaPromise = value =>
+  new Promise((resolve, reject) => {
+    if (value) {
+      setTimeout(() => {
+        resolve("OK");
+      }, 2000);
+    } else {
+      setTimeout(() => {
+        reject("Falhou");
+      }, 2000);
+    }
+  });
+
+// minhaPromise(1)
+//   .then(response => {
+//     console.log(response);
+//   })
+//   .catch(reject => {
+//     console.log(reject);
+//   });
+
+// async function executaPromise(value) {
+//   const response = "";
+//   try {
+//     const response = await minhaPromise(value);
+//     console.log(response);
+//   } catch (reject) {
+//     console.log(reject);
+//   }
+// }
+
+// executaPromise(0);
+
+//------------- AULA 2
+// import axios from "axios";
+
+// class Api {
+//   static async getUserInfo(username) {
+//     try {
+//       const response = await axios.get(
+//         `https://api.github.com/users/${username}`
+//       );
+//       console.log(response);
+//     } catch (err) {
+//       console.warn("Erro na API");
+//     }
+//   }
+// }
+// Api.getUserInfo("diego3g");
+
+//------------ DESAFIOS MODULO 3
+
+//------------- 1
+// Funão delay aciona o .then após 1s
+const delay = () => new Promise(resolve => setTimeout(resolve, 1000));
+function umPorSegundo() {
+  delay().then(() => {
+    console.log("1s");
+    delay().then(() => {
+      console.log("2s");
+      delay().then(() => {
+        console.log("3s");
+      });
+    });
+  });
+}
+// umPorSegundo();
+
+// const delay2 = () => new Promise(resolve => setTimeout(resolve, 1000));
+
+// async function umPorSegundo2() {
+//   try {
+//     const response = await delay();
+//     console.log("1s");
+//     const response1 = await delay();
+//     console.log("2s");
+//     const response2 = await delay();
+//     console.log("3s");
+//   } catch (reject) {
+//     console.log("rejeitado");
+//   }
+// }
+
+// umPorSegundo2();
+
+//----------------- 2
+
+// import axios from "axios";
+// function getUserFromGithub(user) {
+//   axios
+//     .get(`https://api.github.com/users/${user}`)
+//     .then(response => {
+//       console.log(response.data);
+//     })
+//     .catch(err => {
+//       console.log("Usuário não existe");
+//     });
+// }
+
+// getUserFromGithub("diego3g");
+// getUserFromGithub("diego3g124123");
+
+// async function getUserFromGit(user) {
+//   try {
+//     const usuario = await axios.get(`https://api.github.com/users/${user}`);
+//     console.log(usuario);
+//   } catch (err) {
+//     console.warn("Usuario não existe!");
+//   }
+// }
+
+// getUserFromGit("diego3g");
+// getUserFromGit("diego3g124123");
+
+//--------------------3
+// import axios from "axios";
+
+// class Github {
+//   static getRepositories(repo) {
+//     axios
+//       .get(`https://api.github.com/repos/${repo}`)
+//       .then(response => {
+//         console.log(response.data);
+//       })
+//       .catch(err => {
+//         console.log("Repositório não existe");
+//       });
+//   }
+// }
+// Github.getRepositories("rocketseat/rocketseat.com.br");
+// Github.getRepositories("rocketseat/dslkvmskv");
+
+// class Git {
+//   static async getRepositorios(repo) {
+//     try {
+//       const response = await axios.get(`https://api.github.com/repos/${repo}`);
+//       console.log(response);
+//     } catch (err) {
+//       console.log("Repositório não existe!");
+//     }
+//   }
+// }
+
+// Git.getRepositorios("ramonmjr/VueLab");
+// Git.getRepositorios("rocketseat/dslkvmskv");
+
+//-------------- 4
+import axios from "axios";
+const buscaUsuario = usuario => {
+  axios
+    .get(`https://api.github.com/users/${usuario}`)
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(err => {
+      console.log("Usuário não existe");
+    });
+};
+buscaUsuario("diego3g");
+
+const buscaUsu = async usuario => {
+  try {
+    const usu = await axios.get(`https://api.github.com/users/${usuario}`);
+    console.log(usu.data);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
-console.log(usuario);
+buscaUsu("ramonmjr");
